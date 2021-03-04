@@ -103,7 +103,7 @@ speedY = -20
 while running:
 
 
-	clock.tick(15)
+	clock.tick(10)
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			running = False

@@ -76,6 +76,7 @@ class Snake:
 			self.headY = 0
 class Apple:
 	def __init__(self, screen):
+		self
 		self.screen = screen.screen
 		self.AppleX = (randrange(30)) * 20
 		self.AppleY = (randrange(30)) * 20
@@ -83,10 +84,12 @@ class Apple:
 		screen.screen.blit(AppleImg, self.apple_location)
 	def spawn_apple(self, screen):
 		self.screen.blit(AppleImg, self.apple_location)
-	def draw(self, screen):
+	def draw(self, screen, snake, apple):
 		self.AppleX = (randrange(30)) * 20
 		self.AppleY = (randrange(30)) * 20
 		self.apple_location = (self.AppleX, self.AppleY)
+		if self.apple_location in snake.possitions:
+			apple.draw(screen, snake, apple)
 
 
 	
@@ -127,7 +130,7 @@ while running:
 
 
 	if snake.location == apple.apple_location:
-		apple.draw(screen)
+		apple.draw(screen, snake, apple)
 	if snake.location in snake.possitions[:-1]:
 		running = False
 	snake.edge(screen)
@@ -149,4 +152,5 @@ while run:
 	pygame.display.update()
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
-			run= False
+			run = False
+
